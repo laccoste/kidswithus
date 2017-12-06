@@ -28,6 +28,8 @@ public class Application {
         while (shopping) {
 
             Menu();
+
+            
         }
 
     }
