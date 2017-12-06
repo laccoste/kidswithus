@@ -1,10 +1,13 @@
 package model;
 import view.*;
 
-import model.ShoppingCart;
-public class Payment {
+//import java.util.ArrayList;
 
-	public static void paymentOption() {
+public class Payment {
+	
+//	private ShoppingCart cart;
+
+	public  void paymentOption() {
 		
 		
 		// This method shows all elements that are in the shopping cart plus their final price. The 
@@ -17,18 +20,6 @@ public class Payment {
 			System.out.println("------------------------------------------------------------------------------");
 			System.out.println("Please review your shopping cart");
 			System.out.println("------------------------------------------------------------------------------");
-
-			//shows the shopping cart "headline"
-			
-			UserInterface.displayShoppingCart();
-			
-			// shows the actual objects in the shopping cart and their total price
-			
-			ShoppingCart.showCart();
-			System.out.println("------------------------------------------------------------------------------");
-			System.out.println("Your total amount due is " +  ShoppingCart.calculateTotalPrice() + "Euro" );
-			System.out.println("------------------------------------------------------------------------------");
-			System.out.println("");
 			break;
 		case 2:
 			System.out.println("Thanks for your business!");

@@ -78,17 +78,59 @@ import model.User;
 			return value;
 		}
 // method to take input for credit card number (currently only checks for length, which has to be greater than 10
-		public static String inputCreditCard() {
+		public static  String inputCreditCard() {
+			
 			Scanner input = new Scanner(System.in);
-			String creditCard;
-			System.out.println("\t> Please enter your Credit Card number: ");
-			creditCard = input.nextLine();
-			while (creditCard.length() < 10) {
-				System.out.println("Please enter a valid Credit Card Number with at least 10 figures");
-				creditCard = input.nextLine();
+			String creditCardValidation = "";
+			System.out.println("Please enter your credit card number");
+			
+			int numbersOfTries = 3; // The number of tries to log-in.
+			int counterTries = 0; // The counter for the loop
+			boolean creditCardNumber = false; // Sentinel value - breaks the loop
+			
+			do {
+				counterTries++;
+				
+				creditCardValidation = input.nextLine();	
+				boolean creditCardCheck = checkCreditCardAlgorithm(creditCardValidation);
+				if ((creditCardCheck = true) && creditCardValidation.length() == 16) {
+					System.out.println("You have entered a valid credit card number");
+					creditCardNumber = true;
+					
+				} else {
+					System.out.println("Please enter a valid credit card number");
+					//creditCardNumber = false;
+				}
+				
+				} while (creditCardNumber == false );
+			return creditCardValidation;
+			
+			
 			}
-			return creditCard;
-		}
+		
+		
+		
+		
+		public static boolean checkCreditCardAlgorithm(String creditCard)
+		{
+	            int sum = 0;
+	            boolean alternate = false;
+	            for (int i = creditCard.length() - 1; i >= 0; i--)
+	            {
+	                    int n = Integer.parseInt(creditCard.substring(i, i + 1));
+	                    if (alternate)
+	                    {
+	                            n *= 2;
+	                            if (n > 9)
+	                            {
+	                                    n = (n % 10) + 1;
+	                            }
+	                    }
+	                    sum += n;
+	                    alternate = !alternate;
+	            }
+	            return (sum % 10 == 0);
+	    }
 		
 // method that prompts the admin to enter their employee id (could potentially be moved to login class)
 		public static int inputEmployeeId() {
@@ -280,13 +322,14 @@ import model.User;
 // needs to be amended by shipping address etc.!!!!!
 			
 			public static void printReceipt() {
+				ShoppingCart cart = new ShoppingCart();
 				System.out.println("------------------------------------------------------------------------------");
 				System.out.println("Thanks for buying from Kids With Us - Here is your Receipt");
 				System.out.println("------------------------------------------------------------------------------");
 				System.out.println("You have bought: ");
-				ShoppingCart.showReceipt();
+				cart.showReceipt();
 				System.out.println("------------------------------------------------------------------------------");
-				System.out.println("For a total price of:" + ShoppingCart.calculateTotalPrice());
+				System.out.println("For a total price of:" + cart.calculateTotalPrice());
 				System.out.println("------------------------------------------------------------------------------");
 				System.out.println("We will ship to:");
 				

@@ -1,5 +1,4 @@
 package model;
-import	data.DataInputOutput;
 import view.UserInterface;
 
  // initializing the variables for User object
@@ -170,10 +169,14 @@ public class User {
 				return "User [firstName= " + firstName + ", lastName=" + lastName + ",Username=" + username + ",Password=" + password + ",Address=" + address + ",CPR=" + cpr + ",PhoneNumber=" + phoneNumber + ",creditCard=" + creditCard + "]";
 			}
 			
-			// this method writes the details of the individual users to the text file user2.txt
-			public void writeUsertoFile() {
-				String details = firstName + ";" + lastName + ";" + getUsername() + ";" + getPassword() + ";" + address + ";" + cpr + ";" + phoneNumber +  ";" + creditCard;
-				DataInputOutput.WriteDetails("user2.txt", details);
+			
+			public String receiptToString() {
+				return "Name: " + firstName + " " + lastName + " Shipping Address: " + address;
 			}
-}
+			
+			
+			}
+			
+			
+
 
