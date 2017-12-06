@@ -15,10 +15,10 @@ public class Product {
     private double price;
     private boolean available;
    
-
-   public Product() {
-	   
-   }
+public Product() {
+	
+}
+   
     
     public Product(int id, String name, String type, double price, boolean available) { // Creating constructor with variables//
         this.id = id;
@@ -82,9 +82,5 @@ public class Product {
     	return "Product [ID= " + getId() + ",Name= " + getName() + ",Type= " + getType() + ",Price= " + getPrice() + ",Available= " + getAvailable() +"]"; 
     }
     
-    // This method writes the product to the file products2.txt
-    public void writeProductToFile() {
-		String productDetails = id + ";" + name +";" + type + ";" + price + ";" + available;
-		DataInputOutput.WriteDetails("products2.txt", productDetails);
-}
+   
 }
